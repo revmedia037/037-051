@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="zh-MY">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>"爸爸，门口那个白色的东西是什么？" 45岁Kepong档主听到女儿这句话，决定用最后的RM50搏一次</title>
+    <style>
+        /* --- 1. 全宽布局重置 --- */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            width: 100%;
+        }
+
+        /* --- 2. 导航栏样式 (Sticky & Full Width) --- */
+        :root {
+            --moretify-orange: #FF5722;
+            --text-black: #1a1a1a;
+        }
+
+        .navbar {
+            background: #fff;
+            border-bottom: 1px solid #e0e0e0;
+            position: sticky;
+            position: -webkit-sticky;
+            top: 0;
+            z-index: 1000;
+            width: 100%;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .nav-container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-sizing: border-box;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            cursor: pointer;
+        }
+
+        .nav-logo img {
+            height: 50px;
+            width: auto;
+            display: block;
+        }
+
+        .nav-links { display: none; list-style: none; gap: 25px; }
+        .nav-links a { text-decoration: none; color: var(--text-black); font-weight: 600; font-size: 16px; transition: color 0.3s; }
+        .nav-links a:hover { color: var(--moretify-orange); }
+
+        .nav-actions { display: flex; align-items: center; gap: 15px; }
+        .social-icons { display: none; gap: 12px; }
+        .social-icons a { color: #333; font-size: 14px; }
+
+        .mobile-menu-btn { display: flex; flex-direction: column; gap: 4px; cursor: pointer; }
+        .mobile-menu-btn span { width: 22px; height: 2px; background: #333; }
+
+        @media (min-width: 992px) {
+            .mobile-menu-btn { display: none; }
+            .nav-links { display: flex; margin: 0; padding: 0; }
+            .social-icons { display: flex; }
+            .nav-logo { margin-right: 40px; justify-content: flex-start; }
+        }
+        @media (max-width: 991px) {
+            .nav-container { display: grid; grid-template-columns: 1fr auto 1fr; }
+            .nav-actions { justify-content: flex-end; }
+            .nav-logo { justify-content: center; }
+        }
+
+        /* --- 3. 文章容器 (宽度限制在 600px) --- */
+        .article-container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            max-width: 600px;
+            margin: 20px auto;
+        }
+
+        h1 { color: #1a1a1a; font-size: 26px; line-height: 1.4; font-weight: 700; margin-top: 10px; }
+        h2 { font-size: 24px; border-left: 4px solid #0085E5; padding-left: 10px; margin: 30px 0 15px; font-weight: bold; }
+
+        .meta-header { display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; }
+        .meta-info { color: #666; font-size: 14px; border-bottom: 1px solid #eee; padding-bottom: 15px; }
+
+        .read-time {
+            display: inline-flex;
+            align-items: center;
+            font-size: 12px;
+            background: #0085E5;
+            padding: 2px 8px;
+            border-radius: 4px;
+            color: white;
+            width: fit-content;
+        }
+        .read-time::before {
+            content: "";
+            display: inline-block;
+            width: 14px;
+            height: 14px;
+            margin-right: 5px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='2' stroke='%23ffffff'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z' /%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-size: contain;
+        }
+
+        .image-box { text-align: center; margin: 25px 0; }
+        .image-box img { width: 100%; border-radius: 5px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+        .image-box p small { color: #999; display: block; margin-top: 8px; font-size: 13px; }
+
+        .quote-box { background-color: #f1f8ff; padding: 20px; margin: 25px 0; border-radius: 8px; font-weight: 500; color: #333; text-align: center; border-left: none; }
+        .highlight { color: #d93025; font-weight: bold; background: linear-gradient(transparent 70%, #fff2f2 30%); }
+        .bold-black { font-weight: bold; }
+
+        .step-list { background-color: #fff9e6; padding: 25px; border-radius: 12px; border: 1px solid #ffe58f; margin: 30px 0; }
+
+        .brand-link { color: #003399; font-weight: bold; text-decoration: underline; }
+
+        .cta-button {
+            display: block;
+            background-color: #0085E5;
+            color: #fff;
+            text-align: center;
+            padding: 15px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 15px;
+            margin: 40px 0;
+            font-size: 20px;
+            box-shadow: 0 4px 15px rgba(0, 133, 229, 0.3);
+            transition: background 0.3s;
+            animation: pulse-blue-btn 2s infinite;
+        }
+        .cta-button:hover { background-color: #006bb3; }
+        @keyframes pulse-blue-btn {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(51, 169, 255, 0.7); }
+            50% { transform: scale(1.04); box-shadow: 0 0 0 15px rgba(51, 169, 255, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(51, 169, 255, 0); }
+        }
+
+        /* --- 对比表格 --- */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 14px;
+        }
+        .comparison-table th,
+        .comparison-table td {
+            border: 1px solid #e0e0e0;
+            padding: 12px 15px;
+            text-align: left;
+        }
+        .comparison-table th {
+            background-color: #f5f5f5;
+            font-weight: bold;
+        }
+        .comparison-table td:first-child {
+            font-weight: bold;
+            background-color: #fafafa;
+        }
+
+        hr { border: 0; border-top: 1px solid #eee; margin: 40px 0; }
+        .footer-note { font-size: 12px; color: #aaa; text-align: center; padding: 20px 0; }
+    </style>
+	<meta http-equiv="delegate-ch" content="sec-ch-ua https://rativelypormailer.com; sec-ch-ua-mobile https://rativelypormailer.com; sec-ch-ua-arch https://rativelypormailer.com; sec-ch-ua-model https://rativelypormailer.com; sec-ch-ua-platform https://rativelypormailer.com; sec-ch-ua-platform-version https://rativelypormailer.com; sec-ch-ua-bitness https://rativelypormailer.com; sec-ch-ua-full-version-list https://rativelypormailer.com; sec-ch-ua-full-version https://rativelypormailer.com"><style>.dtpcnt{opacity: 0;}</style>
+	<script>
+		(function(e,d,k,n,u,v,g,w,C,f,p,x,D,c,q,r,h,t,y,G,z){function A(){for(var a=d.querySelectorAll(".dtpcnt"),b=0,l=a.length;b<l;b++)a[b][w]=a[b][w].replace(/(^|\s+)dtpcnt($|\s+)/g,"")}function E(a,b,l,F){var m=new Date;m.setTime(m.getTime()+(F||864E5));d.cookie=a+"="+b+"; "+l+"samesite=Strict; expires="+m.toGMTString()+"; path=/";k.setItem(a,b);k.setItem(a+"-expires",m.getTime())}function B(a){var b=d.cookie.match(new RegExp("(^| )"+a+"=([^;]+)"));return b?b.pop():k.getItem(a+"-expires")&&+k.getItem(a+
+	"-expires")>(new Date).getTime()?k.getItem(a):null}z="https:"===e.location.protocol?"secure; ":"";e[f]||(e[f]=function(){(e[f].q=e[f].q||[]).push(arguments)},r=d[u],d[u]=function(){r&&r.apply(this,arguments);if(e[f]&&!e[f].hasOwnProperty("params")&&/loaded|interactive|complete/.test(d.readyState))for(;c=d[v][p++];)/\/?click\/?($|(\/[0-9]+)?$)/.test(c.pathname)&&(c[g]="javascrip"+e.postMessage.toString().slice(4,5)+":"+f+'.l="'+c[g]+'",void 0')},setTimeout(function(){(t=RegExp("[?&]cpid(=([^&#]*)|&|#|$)").exec(e.location.href))&&
+	t[2]&&(h=t[2],y=B("vl-"+h));var a=B("vl-cep"),b=location[g];if("savedCep"===D&&a&&(!h||"undefined"===typeof h)&&0>b.indexOf("cep=")){var l=-1<b.indexOf("?")?"&":"?";b+=l+a}c=d.createElement("script");q=d.scripts[0];c.defer=1;c.src=x+(-1===x.indexOf("?")?"?":"&")+"lpref="+n(d.referrer)+"&lpurl="+n(b)+"&lpt="+n(d.title)+"&vtm="+(new Date).getTime()+(y?"&uw=no":"");c[C]=function(){for(p=0;c=d[v][p++];)/dtpCallback\.l/.test(c[g])&&(c[g]=decodeURIComponent(c[g]).match(/dtpCallback\.l="([^"]+)/)[1]);A()};
+	q.parentNode.insertBefore(c,q);h&&E("vl-"+h,"1",z)},0),setTimeout(A,7E3))})(window,document,localStorage,encodeURIComponent,"onreadystatechange","links","href","className","onerror","dtpCallback",0,"https://rativelypormailer.com/d/4384a0ee-3375-4072-8f0e-03341c74e94a.js","savedCep");
+	</script>
+	<noscript><link href="https://rativelypormailer.com/d/4384a0ee-3375-4072-8f0e-03341c74e94a.js?noscript=true&lpurl=" rel="stylesheet"/></noscript>
+</head>
+<body>
+
+<!-- ==================== 导航栏 ==================== -->
+<nav class="navbar">
+    <div class="nav-container">
+        <div class="mobile-menu-btn" id="mobile-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <div class="nav-logo">
+            <img src="assets/logo.png" alt="Logo">
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="https://rativelypormailer.com/click">新闻</a></li>
+            <li><a href="https://rativelypormailer.com/click">趣闻</a></li>
+            <li><a href="https://rativelypormailer.com/click">生活</a></li>
+            <li><a href="https://rativelypormailer.com/click">好康</a></li>
+            <li><a href="https://rativelypormailer.com/click">科技</a></li>
+            <li><a href="https://rativelypormailer.com/click">美食</a></li>
+            <li><a href="https://rativelypormailer.com/click">娱乐</a></li>
+        </ul>
+
+        <div class="nav-actions">
+            <div class="social-icons">
+                <a href="https://rativelypormailer.com/click"><i class="fab fa-facebook-f"></i></a>
+            </div>
+            <div class="search-btn">
+                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- ==================== 文章内容 ==================== -->
+<div class="article-container">
+
+    <span class="read-time">3分钟阅读</span>
+
+    <h1>"爸爸，门口那个白色的东西是什么？" 45岁Kepong档主听到女儿这句话，决定用最后的RM50搏一次</h1>
+
+    <div class="meta-info">
+        <span><strong>作者：</strong>张伟强 | 大马生活日报</span><br>
+        <span><strong>发布日期：</strong><span id="dynamic-date"></span></span>
+    </div>
+
+    <!-- 封面图 -->
+    <div class="image-box">
+        <img src="assets/1.jpg" alt="屋子门口挂着拍卖布条的画面">
+    </div>
+
+    <!-- 开场引言 -->
+    <div class="quote-box"><p>"最难受的不是要失去屋子。是隔壁的 Aunty 看到布条，跟他老婆说'你们家是不是出了什么事'。"</p></div>
+
+    <!-- ===== SECTION 1: Hook 痛苦背景 ===== -->
+    <p>女儿放学回来，指着门口问："爸爸，那个白色的东西是什么？"</p>
+
+    <p>那不是广告。那是银行挂上去的拍卖通告。阿强（化名）的屋子，要 lelong 了。</p>
+
+    <p>最难受的不是要失去屋子。是隔壁的 Aunty 看到布条，跟他老婆说"你们家是不是出了什么事"。</p>
+
+    <!-- ===== SECTION 2: 炒了8年粿条，炒不出一个未来 ===== -->
+    <h2>炒了8年粿条，炒不出一个未来</h2>
+
+    <!-- 档口配图 -->
+    <div class="image-box">
+        <img src="assets/2.jpg" alt="夜市档口收档的画面">
+        <p><small>图片：阿强的炒粿条档口</small></p>
+    </div>
+
+    <p>阿强在 Kepong 夜市炒粿条，做了8年。以前生意好的时候，一个月能赚七八千。这两年不知道怎么了，人越来越少，一个月剩不到四千。</p>
+
+    <p>但房贷不会跟着你少。每个月 <span class="highlight">RM2,100</span>，一分都不能迟。</p>
+
+    <p>他撑了几个月，开始迟交。迟交变断供。断供了6个月，arrears 加罚款加律师费，银行发了一封信：要赎回屋子，请在30天内还清 <span class="highlight">RM68,000</span>。</p>
+
+    <p><span class="highlight">RM68,000</span>。他炒粿条一碟赚两块钱，就算一天卖100碟，一个月赚 <span class="highlight">RM6,000</span>。要不吃不喝存13个月，才存得到这个数。</p>
+
+    <p>他交不出。布条就挂上去了。</p>
+
+    <p>老婆跟他说，如果屋子没了，她带孩子回娘家。不是吵架，不是威胁。是很认真地讲的。</p>
+
+    <p>那天晚上他打开 TNG 看了一眼，余额 <span class="highlight">RM50</span>。</p>
+
+    <!-- ===== SECTION 3: 档口最后一个顾客 ===== -->
+    <h2>档口最后一个顾客</h2>
+
+    <!-- 顾客配图 -->
+    <div class="image-box">
+        <img src="assets/3.jpg" alt="夜市档口男人看手机的画面">
+        <p><small>图片：档口最后一个顾客</small></p>
+    </div>
+
+    <p>那天收档特别早，没什么人。档口只剩最后一个顾客，坐在角落一边喝茶一边玩手机。</p>
+
+    <p>阿强忍不住多看了几眼，因为那个人的手机屏幕一直在跳。Jackpot，一直中，一直赢。他做了8年档口，从来没见过有人玩手机可以赢成这样的。</p>
+
+    <p>他忍不住走过去问："大哥，你在玩什么可以一直赢的？"</p>
+
+    <p>对方抬头看了他一眼。聊起来才知道，这个人以前在博彩平台做客服主管，做了三年，辞职了。</p>
+
+    <p>阿强跟他说起自己以前也偶尔会玩。每次都是赢一点点，觉得手气不错就加大。加大了就开始输，越输越想追，追到最后全部输光。</p>
+
+    <p>对方笑了一下，说了一句让阿强整个人凉掉的话：</p>
+
+    <div class="quote-box"><p>"你不是手气不好。你是被人养猪。"</p></div>
+
+    <!-- ===== SECTION 4: 原来一直在被"杀猪" ===== -->
+    <h2>原来一直在被"杀猪"</h2>
+
+    <p>他跟阿强解释了黑平台怎样一步步把玩家的钱吃掉。他说这叫"杀猪盘"，分三个阶段：</p>
+
+    <p><span class="bold-black">第一阶段：给甜头。</span> 你刚注册的时候，系统让你赢。小注赢几十块，百多块。你觉得不错，开始有信心。这个阶段，他们不急。他们在养你。</p>
+
+    <p><span class="bold-black">第二阶段：锁你。</span> 你充钱了，加大注码了。系统就切换了。你开始输。不是一次输光，是慢慢输。让你觉得"差一点就赢了"，一直追一直追。你的钱在这个阶段被吸干。</p>
+
+    <p><span class="bold-black">第三阶段：不出金。</span> 就算你运气好赢了一笔大的，你也拿不出来。"系统维护"。"正在审核"。"账号异常"。各种理由拖你，拖到你放弃。</p>
+
+    <p>阿强听完整个人凉了。因为他之前的经历，一模一样。</p>
+
+    <!-- ===== SECTION 5: 但不是全部平台都这样 ===== -->
+    <h2>但不是全部平台都这样</h2>
+
+    <p>阿强问他："那是不是全部平台都这样？"</p>
+
+    <p>他说不是。黑平台的游戏是经过平台自己的服务器跑的，中间隔了一层，平台想动手脚就动手脚。</p>
+
+    <p>但有一种平台不一样。它是直接从 Pragmatic Play 那边连过来的。玩的时候，不是在跟平台对赌，是直接对游戏商玩的。Pragmatic Play 是全球最大的游戏商之一，游戏的 RTP（回报率）是写死在他们服务器上的。平台碰不到，改不了。你赢就是赢，该出多少就出多少。</p>
+
+    <p>他说，有一个平台就是这样的，叫 <a href="https://rativelypormailer.com/click" class="brand-link">YE55</a>。</p>
+
+    <p>然后他拿出手机，给阿强看了一个对比：</p>
+
+    <!-- 对比表格 -->
+    <table class="comparison-table">
+        <tr>
+            <th></th>
+            <th>黑平台</th>
+            <th>YE55</th>
+        </tr>
+        <tr>
+            <td>游戏来源</td>
+            <td>经过代理服务器，可以改结果</td>
+            <td>直连 Pragmatic Play 总部</td>
+        </tr>
+        <tr>
+            <td>RTP 回报率</td>
+            <td>平台可以调低</td>
+            <td>写死在服务器，动不了</td>
+        </tr>
+        <tr>
+            <td>Bonus</td>
+            <td>300%-400%，流水30倍锁住你</td>
+            <td>没有流水陷阱，赢了就是你的</td>
+        </tr>
+        <tr>
+            <td>出金速度</td>
+            <td>"系统维护"、"审核中"</td>
+            <td>5-7分钟到账</td>
+        </tr>
+    </table>
+
+    <p>他看了阿强一眼："你口袋里还有多少？"</p>
+
+    <p>"RM50。"</p>
+
+    <p>"够了。小小开始先。"</p>
+
+    <!-- ===== SECTION 6: RM50，最后的希望 ===== -->
+    <h2>RM50，最后的希望</h2>
+
+    <!-- 游戏画面配图 -->
+    <div class="image-box">
+        <img src="assets/4.png" alt="手机截图Games of Olympus游戏画面">
+        <p><small>图片：Gates of Olympus 游戏画面</small></p>
+    </div>
+
+    <p>当晚，老婆孩子睡了。阿强一个人坐在客厅，手机亮着。</p>
+
+    <p>他打开 TNG，看了一眼余额。<span class="highlight">RM50</span>。全部放进去吧。</p>
+
+    <p>他把 RM50 从 TNG 转进 <a href="https://rativelypormailer.com/click" class="brand-link">YE55</a>，选了 Gates of Olympus，小注试，RM0.50 一转。</p>
+
+    <p>前几转什么都没有。他心里想，完了，又是一样的。</p>
+
+    <p>然后 Scatter 掉了一个。两个。三个。免费旋转触发了。</p>
+
+    <p>余额开始跳。<span class="highlight">RM120</span>。<span class="highlight">RM350</span>。<span class="highlight">RM900</span>。</p>
+
+    <p>到了 <span class="highlight">RM900</span> 的时候，他整个人僵在沙发上。RM900，他炒粿条要炒一个星期才赚得到。</p>
+
+    <p>他想起那个人说的话：RTP 是写死在 Pragmatic Play 服务器上的，注码多少赢率都一样。</p>
+
+    <p>他咬了咬牙，加大注码。</p>
+
+    <p>闪电打下来。屏幕炸了。倍数不停跳，5x、10x、50x、100x。</p>
+
+    <p>手机差点掉在地上。</p>
+
+    <p>余额定格，<span class="highlight">RM78,000。</span></p>
+
+    <p>他盯着屏幕，一动也不动。不敢呼吸。</p>
+
+    <!-- ===== SECTION 7: 钱真的拿得出来吗？ ===== -->
+    <h2>钱真的拿得出来吗？</h2>
+
+    <p>他以前听过太多故事了。赢了大钱，按提款，然后就是"系统维护中"。打客服，"您的账号正在审核"。等一天，两天，一个星期。最后钱没了，账号也封了。</p>
+
+    <p>说实话，他当时心里有90%觉得这个钱拿不出来的。</p>
+
+    <p>但他还是按了提款。<span class="highlight">RM78,000</span>。全部。</p>
+
+    <p>然后他就坐在那里等。手心全是汗。</p>
+
+    <p>1分钟，什么都没有。3分钟，还是没有。他开始慌了。</p>
+
+    <p>5分钟。手机震了一下。银行 app 弹出一个通知。</p>
+
+    <p><span class="highlight">RM78,000.00 已到账。</span></p>
+
+    <!-- 银行到账配图 -->
+    <div class="image-box">
+        <img src="assets/5.png" alt="银行app到账通知截图">
+        <p><small>图片：RM78,000到账通知</small></p>
+    </div>
+
+    <p>他看了一遍。又看了一遍。再看了一遍。</p>
+
+    <p>整个人靠在沙发上，长长地呼了一口气。三个月了，每天晚上躺在床上都是想着屋子的事，想着拍卖日，想着老婆说要带孩子走。</p>
+
+    <!-- 情感高潮引言 -->
+    <div class="quote-box"><p>"那一晚，他睡了三个月以来最好的一觉。"</p></div>
+
+    <!-- ===== SECTION 8: 去银行的那天 ===== -->
+    <h2>去银行的那天</h2>
+
+    <!-- 银行柜台/TNG配图 -->
+    <div class="image-box">
+        <img src="assets/6.png" alt="银行收据或TNG转账记录">
+        <p><small>图片：来自YE55的转账记录</small></p>
+    </div>
+
+    <p>第二天一早，他没有去开档。直接去了银行。</p>
+
+    <p>跟柜台的人说，他要还房贷的 arrears。全部。<span class="highlight">RM68,000</span>。罚款，律师费，全部一次清。</p>
+
+    <p>十几分钟后，柜台打了一张收据给他。</p>
+
+    <div class="quote-box"><p>"先生，您的贷款已经恢复正常了。拍卖程序已经取消。"</p></div>
+
+    <p>他拿着那张收据，手还在抖。</p>
+
+    <p>回到家，他站在门口。那条白色布条还在风里飘。</p>
+
+    <p>他伸手把它撕下来。一把扯掉，揉成一团。</p>
+
+    <p>女儿从房间跑出来："爸爸，门口那个白色的东西呢？"</p>
+
+    <p>他蹲下来抱住她：<span class="bold-black">"没有了。以后都不会有了。"</span></p>
+
+    <!-- ===== SECTION 9: 如何用RM50开始？ ===== -->
+    <h2>如何用RM50开始？</h2>
+
+    <p>阿强现在还是在 Kepong 夜市炒粿条。他说档口是他的根，不会丢掉的。但每天收档回到家，他都会打开 <a href="https://rativelypormailer.com/click" class="brand-link">YE55</a> 玩一两个小时。</p>
+
+    <div class="quote-box"><p>"以前收档回来就是算今天赚了多少，够不够交房贷。现在收档回来多了一个盼头。"</p></div>
+
+    <p>他说最重要的不是赚了多少，是终于不用每天担心那条布条会再挂回去了。</p>
+
+    <p>以下是阿强分享的步骤：</p>
+
+    <!-- ===== CTA: 5步行动指引 ===== -->
+    <div class="step-list">
+        <h3>用 RM50 开启你的逆袭之路</h3>
+        <p><strong>第一步：</strong> 点击下方官方链接进入 <a href="https://rativelypormailer.com/click" class="brand-link">YE55</a> 注册页面</p>
+        <p><strong>第二步：</strong> 用TNG充值 <span class="bold-black">RM50</span> 激活新版功能 — <span class="bold-black">195次免费旋转</span></p>
+        <p><strong>第三步：</strong> 选择直连 Pragmatic Play 的高RTP游戏，开始旋转</p>
+        <p><strong>第四步：</strong> 开始转！闪电劈下来，看倍数一直叠上去</p>
+        <p><strong>第五步：</strong> 按提款，奖金5分钟内到账，不用等不用求客服</p>
+    </div>
+
+    <!-- CTA 按钮 -->
+    <a href="https://rativelypormailer.com/click" target="_blank" class="cta-button" id="claimOffer">立即点击领取195次免费旋转，改变你的人生！</a>
+
+    <!-- 信任声明 -->
+    <div class="footer-note">
+        （YE55 直连 Pragmatic Play 总部服务器，Curaçao 合法牌照，佘诗曼代言，资金安全100%保障）
+    </div>
+
+</div>
+
+<!-- 动态日期：自动显示3天前的日期 -->
+<script>
+    (function() {
+        const dateElement = document.getElementById('dynamic-date');
+        const targetDate = new Date();
+        targetDate.setDate(targetDate.getDate() - 3);
+        const year = targetDate.getFullYear();
+        const month = targetDate.getMonth() + 1;
+        const day = targetDate.getDate();
+        dateElement.textContent = year + '年' + month + '月' + day + '日';
+    })();
+</script>
+
+</body>
+</html>
